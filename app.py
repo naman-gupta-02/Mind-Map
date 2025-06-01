@@ -8,28 +8,9 @@ import zipfile
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
-# === Setup paths ===
-model_zip_path = "bert_sentiment_model.zip"
-model_dir = "bert_sentiment_model2"
-google_drive_file_id = "1b5FrSOx2zet6Yh-wKGCqhRGUJTa0hQOG"  # Extracted from your link
-download_url = f"https://drive.google.com/uc?id={google_drive_file_id}"
-
-# === Download the zip if not already present ===
-if not os.path.exists(model_dir):
-    if not os.path.exists(model_zip_path):
-        print("🔽 Downloading model from Google Drive...")
-        gdown.download(download_url, model_zip_path, quiet=False)
-
-    print("📦 Unzipping model files...")
-    with zipfile.ZipFile(model_zip_path, 'r') as zip_ref:
-        zip_ref.extractall(model_dir)
-
-# === Load model and tokenizer ===
-print("🚀 Loading tokenizer and model...")
-
-tokenizer = BertTokenizer.from_pretrained(model_dir)
-model = TFBertForSequenceClassification.from_pretrained(model_dir)
-print("✅ Model loaded successfully.")
+model_path = "bert_sentiment_model"
+tokenizer = BertTokenizer.from_pretrained(model_path)
+model = TFBertForSequenceClassification.from_pretrained(model_path)
 
 
 # Define labels
