@@ -27,8 +27,10 @@ if not os.path.exists(model_dir):
 # === Load model and tokenizer ===
 print("🚀 Loading tokenizer and model...")
 
-tokenizer = BertTokenizer.from_pretrained(model_path)
-model = TFBertForSequenceClassification.from_pretrained(model_path)
+tokenizer = BertTokenizer.from_pretrained(model_dir)
+model = TFBertForSequenceClassification.from_pretrained(model_dir)
+print("✅ Model loaded successfully.")
+
 
 # Define labels
 id2label = {0: "Negative", 1: "Neutral", 2: "Positive"}
