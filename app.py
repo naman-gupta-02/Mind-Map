@@ -10,7 +10,7 @@ app.secret_key = "your_secret_key"
 
 # === Setup paths ===
 model_zip_path = "bert_sentiment_model.zip"
-model_dir = "bert_sentiment_model"
+model_dir = "bert_sentiment_model2"
 google_drive_file_id = "1b5FrSOx2zet6Yh-wKGCqhRGUJTa0hQOG"  # Extracted from your link
 download_url = f"https://drive.google.com/uc?id={google_drive_file_id}"
 
@@ -52,5 +52,5 @@ def index():
     return render_template("index.html", prompt=prompt)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # default to 5000 locally
+    port = int(os.environ.get("PORT", 5020))  # default to 5000 locally
     app.run(host="0.0.0.0", port=port)
